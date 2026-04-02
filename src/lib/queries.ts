@@ -1,39 +1,6 @@
-export const teamMembersQuery = `
-  *[_type == "teamMember"] | order(order asc) {
-    _id, name, title, image, availability, bio, specialisation, slug
-  }
-`
-
-export const testimonialsQuery = `
-  *[_type == "testimonial"] | order(order asc) {
-    _id, name, content, rating, isAnonymous
-  }
-`
-
-export const recentBlogsQuery = `
-  *[_type == "blog"] | order(publishedAt desc)[0...3] {
-    _id, title, slug, publishedAt, excerpt, mainImage, categories,
-    author { name, image }
-  }
-`
-
-export const allBlogsQuery = `
-  *[_type == "blog"] | order(publishedAt desc) {
-    _id, title, slug, publishedAt, excerpt, mainImage, categories,
-    author { name, image }
-  }
-`
-
-export const blogBySlugQuery = `
-  *[_type == "blog" && slug.current == $slug][0] {
-    _id, title, slug, publishedAt, excerpt, mainImage, categories, body,
-    author { name, bio, image }
-  }
-`
-
-export const relatedBlogsQuery = `
-  *[_type == "blog" && slug.current != $slug && count((categories)[@ in $categories]) > 0] | order(publishedAt desc)[0...3] {
-    _id, title, slug, publishedAt, excerpt, mainImage, categories,
-    author { name, image }
-  }
-`
+export const teamMembersQuery = `*[_type == "teamMember"] | order(order asc) { _id, name, title, image, availability, bio, specialisation, slug }`
+export const testimonialsQuery = `*[_type == "testimonial"] | order(order asc) { _id, name, content, rating, isAnonymous }`
+export const recentBlogsQuery = `*[_type == "blog"] | order(publishedAt desc)[0...3] { _id, title, slug, publishedAt, excerpt, mainImage, categories, author { name, image } }`
+export const allBlogsQuery = `*[_type == "blog"] | order(publishedAt desc) { _id, title, slug, publishedAt, excerpt, mainImage, categories, isFeatured, author { name, image } }`
+export const blogBySlugQuery = `*[_type == "blog" && slug.current == $slug][0] { _id, title, slug, publishedAt, excerpt, mainImage, categories, body, isFeatured, author { name, bio, image } }`
+export const relatedBlogsQuery = `*[_type == "blog" && slug.current != $slug && count((categories)[@ in $categories]) > 0] | order(publishedAt desc)[0...3] { _id, title, slug, publishedAt, excerpt, mainImage, categories, author { name, image } }`

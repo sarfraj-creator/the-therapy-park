@@ -9,7 +9,5 @@ export default defineConfig({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   basePath: '/studio',
   plugins: [structureTool()],
-  schema: {
-    types: schemaTypes,
-  },
+  schema: { types: schemaTypes },
 })

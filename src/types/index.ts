@@ -1,14 +1,11 @@
-export interface NavLink {
-  label: string
-  href: string
-}
-
 export interface TeamMember {
   _id: string
   name: string
   title: string
   image: any
   availability: string
+  bio?: string
+  specialisation?: string[]
   slug: { current: string }
 }
 
@@ -17,6 +14,7 @@ export interface Testimonial {
   name: string
   content: string
   rating: number
+  isAnonymous?: boolean
 }
 
 export interface BlogPost {
@@ -27,6 +25,8 @@ export interface BlogPost {
   excerpt: string
   mainImage: any
   categories: string[]
+  isFeatured?: boolean
+  body?: any[]
   author: {
     name: string
     bio: string
